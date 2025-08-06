@@ -33,3 +33,20 @@ This project demonstrates a **GenAI-powered Question & Answer pipeline** built o
 ---
 
 ## Repository Structure
+genai-qa-pipeline/
+├── src/
+│   ├── main.py            # CLI entry point
+│   ├── s3_client.py       # Handles S3 document retrieval (placeholder)
+│   ├── bedrock_client.py  # Simulated Bedrock client using Hugging Face
+│   ├── validator.py       # Latency and output validation functions
+│   └── config.py          # Constants for bucket and file names
+├── tests/
+│   ├── test_latency.py    # Pytest for latency validation (to be added)
+│   └── test_placeholder.py# Placeholder test to keep tests folder active
+├── requirements.txt       # Dependencies
+└── README.md              # Project documentation
+
+
+## Upcoming Features
+- Hugging Face QA pipeline integrated to simulate Amazon Bedrock responses
+- Real S3 context fetching (next step)
