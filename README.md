@@ -41,8 +41,7 @@ This project demonstrates a **GenAI-powered Question & Answer pipeline** built o
 - │   ├── validator.py       # Latency and output validation functions
 - │   └── config.py          # Constants for bucket and file names
 - ├── tests/
-- │   ├── test_latency.py    # Pytest for latency validation (to be added)
-- │   └── test_placeholder.py# Placeholder test to keep tests folder active
+- │   ├── test_latency.py    # Pytest for latency validation
 - ├── requirements.txt       # Dependencies
 - └── README.md              # Project documentation
 
