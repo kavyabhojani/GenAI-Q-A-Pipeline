@@ -1,12 +1,13 @@
 import time
+from typing import Any, Callable, Tuple
+from src.logger import log_info
 
-def check_latency(function, *args, max_latency=2, **kwargs):
-    """
-    Measures the time taken by a function and compares it against max_latency.
-    Returns a tuple (result, elapsed_time, is_within_limit).
-    """
-    start_time = time.time()
+def check_latency(function: Callable[..., Any], *args, max_latency: float = 2.0, **kwargs) -> Tuple[Any, float, bool]:
+
+    log_info(f"Validating latency (limit={max_latency}s)...")
+    start = time.time()
     result = function(*args, **kwargs)
-    elapsed = time.time() - start_time
-    is_within_limit = elapsed <= max_latency
-    return result, elapsed, is_within_limit
+    elapsed = time.time() - start
+    within_limit = elapsed <= max_latency
+    log_info(f"Latency measured: {elapsed:.4f}s (within limit: {within_limit})")
+    return result, elapsed, within_limit
