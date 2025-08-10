@@ -34,16 +34,27 @@ This project demonstrates a **GenAI-powered Question & Answer pipeline** built o
 
 ## Repository Structure
 - genai-qa-pipeline/
-- ├── src/
-- │   ├── main.py            # CLI entry point
-- │   ├── s3_client.py       # Handles S3 document retrieval (placeholder)
-- │   ├── bedrock_client.py  # Simulated Bedrock client using Hugging Face
-- │   ├── validator.py       # Latency and output validation functions
-- │   └── config.py          # Constants for bucket and file names
-- ├── tests/
-- │   ├── test_latency.py    # Pytest for latency validation
-- ├── requirements.txt       # Dependencies
-- └── README.md              # Project documentation
+- ├── src/  
+- │   ├── __init__.py              # Package initializer  
+- │   ├── main.py                  # CLI entry point for Q&A pipeline  
+- │   ├── s3_client.py             # Handles S3 document retrieval (simulated or real)  
+- │   ├── bedrock_client.py        # Simulated Bedrock client using Hugging Face QA pipeline  
+- │   ├── validator.py             # Latency and output validation functions  
+- │   ├── config.py                # Constants and configuration (e.g., bucket names, flags)  
+- │   ├── logger.py                # Logging helper functions  
+- │   ├── model_interface.py       # Model inference interface (future Bedrock integration)  
+- │
+- ├── tests/  
+- │   ├── test_placeholder.py              # Initial placeholder test file  
+- │   ├── test_latency.py                  # Pytest for latency validation  
+- │   ├── test_main_flow.py                # End-to-end pipeline flow test  
+- │   ├── test_s3_client.py                # Unit tests for S3 client functions  
+- │   ├── test_bedrock_fallback.py         # Tests Bedrock fallback behavior when pipeline fails  
+- │   ├── test_bedrock_insufficient_context.py  # Tests handling of insufficient context in QA model  
+- │
+- ├── requirements.txt            # Dependencies list  
+- ├── README.md                   # Project documentation  
+
 
 
 ## Upcoming Features
