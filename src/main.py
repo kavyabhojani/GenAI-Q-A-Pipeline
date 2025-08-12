@@ -3,18 +3,21 @@ from src.logger import log_info, log_error
 from src.s3_client import fetch_context
 from src.bedrock_client import get_response_from_model
 from src.validator import check_latency
-from src.config import DEFAULT_MAX_LATENCY
+from src.config import DEFAULT_MAX_LATENCY, S3_BUCKET_NAME, CONTEXT_FILE_KEY
 
 @click.command()
 @click.option('--query', prompt='Enter your question', help='The question you want to ask.')
 @click.option('--max-latency', type=float, default=DEFAULT_MAX_LATENCY, show_default=True,
               help='Maximum allowed latency (seconds).')
 @click.option('--show-context', is_flag=True, default=False, help='Print the loaded context.')
-def main(query: str, max_latency: float, show_context: bool):
+@click.option('--use-real-s3', is_flag=True, default=False, help='Fetch context from real S3 instead of simulation.')
+@click.option('--bucket', default=S3_BUCKET_NAME, show_default=True, help='S3 bucket name (when using real S3).')
+@click.option('--key', default=CONTEXT_FILE_KEY, show_default=True, help='S3 object key (when using real S3).')
+def main(query: str, max_latency: float, show_context: bool, use_real_s3: bool, bucket: str, key: str):
     log_info(f"Received query: {query}")
 
     try:
-        context = fetch_context()
+        context = fetch_context(use_real_s3=use_real_s3, bucket_name=bucket, key=key)
         if show_context:
             log_info(f"Context: {context}")
         else:
