@@ -20,3 +20,6 @@ def fetch_context(use_real_s3: bool | None = None, bucket_name: str | None = Non
     except Exception as e:
         log_error(f"Real S3 fetch failed: {e}; falling back to simulated context.")
         return "Sample context text loaded from S3 (simulated)."
+
+def get_context_length() -> int:
+    return len(fetch_context())
