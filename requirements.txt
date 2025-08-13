@@ -4,5 +4,3 @@ torch
 pytest
 click
 boto3
-transformers
-
