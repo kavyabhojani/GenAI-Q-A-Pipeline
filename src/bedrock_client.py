@@ -15,9 +15,6 @@ def _lazy_init_pipeline() -> None:
         _qa_pipeline = None
         log_error(f"Failed to initialize Hugging Face pipeline: {e}")
 
-def is_pipeline_ready() -> bool:
-    return _qa_pipeline is not None
-
 def get_response_from_model(query: str, context: str) -> str:
     _lazy_init_pipeline()
 
@@ -35,6 +32,9 @@ def get_response_from_model(query: str, context: str) -> str:
     except Exception as e:
         log_error(f"Inference failed: {e}")
         return f"[Fallback] Inference error. Query: {query[:60]}..."
+
+def is_pipeline_ready() -> bool:
+    return _qa_pipeline is not None
 
 def pipeline_status() -> str:
     return "Ready" if is_pipeline_ready() else "Not Initialized"
