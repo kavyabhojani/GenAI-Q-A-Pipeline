@@ -5,6 +5,8 @@ from src.bedrock_client import get_response_from_model, pipeline_status
 from src.validator import check_latency
 from src.config import DEFAULT_MAX_LATENCY, S3_BUCKET_NAME, CONTEXT_FILE_KEY
 
+APP_VERSION = "0.1.0"
+
 @click.group()
 def cli():
     pass
@@ -48,6 +50,10 @@ def health(use_real_s3: bool, bucket: str, key: str):
         log_info(f"S3 Status: OK (fetched {len(context)} chars from {bucket}/{key})")
     except Exception as e:
         log_error(f"S3 Status: ERROR ({e})")
+
+@cli.command(name="version")
+def version():
+    log_info(f"GenAI Q&A Pipeline - Version {APP_VERSION}")
 
 if __name__ == "__main__":
     cli()
