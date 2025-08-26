@@ -51,14 +51,14 @@ This project demonstrates a **GenAI-powered Question & Answer pipeline** built o
 - │   ├── test_s3_client.py                # Unit tests for S3 client functions  
 - │   ├── test_bedrock_fallback.py         # Tests Bedrock fallback behavior when pipeline fails  
 - │   ├── test_bedrock_insufficient_context.py  # Tests handling of insufficient context in QA model
-- |   ├── test_cli_json.py                  # Tests JSON outputs  
+- │   ├── test_cli_json.py                  # Tests JSON outputs  
 - │
 - ├── requirements.txt            # Dependencies list  
 - ├── README.md                   # Project documentation
 
 ---  
 
-### JSON Output Mode
+## JSON Output Mode
 Both `run` and `health` commands support `--json` for machine-readable output.
 
 ```bash
@@ -70,3 +70,5 @@ python -m src.main health --json
 ## Upcoming Features
 - Hugging Face QA pipeline integrated to simulate Amazon Bedrock responses
 - Real S3 context fetching (next step)
+
+---
