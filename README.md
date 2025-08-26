@@ -64,11 +64,10 @@ Both `run` and `health` commands support `--json` for machine-readable output.
 ```bash
 python -m src.main run --query "What is cloud computing?" --json
 python -m src.main health --json
+```
 
 ---
 
 ## Upcoming Features
 - Hugging Face QA pipeline integrated to simulate Amazon Bedrock responses
 - Real S3 context fetching (next step)
-
----
